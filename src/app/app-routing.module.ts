@@ -7,6 +7,11 @@ import { MainDashComponent } from './main-dash/main-dash.component';
 
 const routes: Routes = [
   {
+    path: 'about',
+    component: MainPageComponent,
+    data: { title: 'About' }
+  },
+  {
     path: 'main',
     component: MainDashComponent,
     data: { title: 'Main dashboard' }

@@ -6,26 +6,29 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule, MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { ForecastTableComponent } from './forecast-table/forecast-table.component';
+import { SelectCityComponent } from './select-city/select-city.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     MainDashComponent,
-    ForecastTableComponent
+    ForecastTableComponent,
+    SelectCityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,    
+    FormsModule,
+    ReactiveFormsModule,    
     MatInputModule, 
     MatButtonModule,
     MatSelectModule,
@@ -39,7 +42,8 @@ import { ForecastTableComponent } from './forecast-table/forecast-table.componen
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-.grid-container {
+.page-container {
   margin: 20px;
 }
 
@@ -16,6 +16,7 @@
   right: 10px;
 }
 
-.dashboard-card-content {
-  text-align: center;
+.spaced {
+  padding: 50px 0 0 50px;
+  line-height: 2.5em;
 }

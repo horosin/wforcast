@@ -11,27 +11,11 @@ import { ForecastTableItem } from '../forecast-table/forecast-table-datasource'
   styleUrls: ['./main-dash.component.css']
 })
 export class MainDashComponent implements OnInit {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
   forecastData: Observable<ForecastTableItem[]>;
+  meanPressure: any;
+  meanHumidity: any;
+  meanTemperature: any;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -39,5 +23,17 @@ export class MainDashComponent implements OnInit {
 
   ngOnInit() {
     this.forecastData = this.weatherService.getForecast(1).pipe(map((x:any) => x.list));
+    this.calcMeanValues()
+  }
+
+  calcMeanValues() {
+    this.forecastData.subscribe(data => {
+      this.meanPressure = data.reduce(
+        (accumulator, val) => accumulator + val.main.pressure, 0) / data.length;
+      this.meanHumidity = data.reduce(
+        (accumulator, val) => accumulator + val.main.humidity, 0) / data.length;
+      this.meanTemperature = data.reduce(
+        (accumulator, val) => accumulator + val.main.temp, 0) / data.length;
+    })
   }
 }

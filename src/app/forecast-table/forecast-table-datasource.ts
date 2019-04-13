@@ -7,9 +7,9 @@ import { Observable, of, merge } from 'rxjs';
 export interface ForecastTableItem {
   dt: number;
   main: {
-    temp: Number,
-    pressure: Number,
-    humidity: Number
+    temp: number,
+    pressure: number,
+    humidity: number
   }
 }
 
