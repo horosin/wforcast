@@ -1,6 +1,6 @@
 <form class="example-form">
   <mat-form-field class="city-input">
-    <input matInput placeholder="City name" [value]="city">
+    <input matInput placeholder="City name" [(ngModel)]="city" name="city">
   </mat-form-field>
   <mat-form-field class="country-input">
     <input type="text" placeholder="Country" aria-label="Country" matInput [formControl]="myControl"
@@ -11,5 +11,5 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-stroked-button>See the forecast</button>
+  <button mat-stroked-button (click)="seeForecast()">See the forecast</button>
 </form>
