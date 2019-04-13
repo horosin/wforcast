@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { WeatherService } from '../weather.service'
 import { ForecastTableItem } from '../forecast-table/forecast-table-datasource'
+import { Country } from '../select-city/select-city.component'
 
 @Component({
   selector: 'app-main-dash',
@@ -12,18 +13,41 @@ import { ForecastTableItem } from '../forecast-table/forecast-table-datasource'
 })
 export class MainDashComponent implements OnInit {
 
+  country: Country = {
+    name: 'United Kingdom',
+    alpha2: 'UK'
+  };
+  city: string = 'London';
   forecastData: Observable<ForecastTableItem[]>;
   meanPressure: any;
   meanHumidity: any;
   meanTemperature: any;
+
+
+  cardsize = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(({ matches }) => {
+      if (matches) {
+        return {
+          doubleWidth: 1
+        };
+      }
+      return {
+        doubleWidth: 2
+      };
+    })
+  );
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.forecastData = this.weatherService.getForecast(1).pipe(map((x:any) => x.list));
-    this.calcMeanValues()
+    this.update();
+  }
+
+  update() {
+    this.forecastData = this.weatherService.getForecast(this.city, this.country.alpha2).pipe(map((x:any) => x.list));
+    this.forecastData.subscribe(() => this.calcMeanValues())
   }
 
   calcMeanValues() {

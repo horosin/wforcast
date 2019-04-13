@@ -1,10 +1,10 @@
 <form class="example-form">
   <mat-form-field class="city-input">
-    <input matInput placeholder="City name" value="">
+    <input matInput placeholder="City name" [value]="city">
   </mat-form-field>
   <mat-form-field class="country-input">
     <input type="text" placeholder="Country" aria-label="Country" matInput [formControl]="myControl"
-      [matAutocomplete]="auto">
+      [matAutocomplete]="auto" [value]="country">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option.name}}

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -16,6 +16,8 @@ export interface Country {
 })
 export class SelectCityComponent implements OnInit {
 
+  @Input('city') city: string;
+  @Input('country') country: Country;
   myControl = new FormControl();
   options: Country[] = countries;
   filteredOptions: Observable<Country[]>;
@@ -27,6 +29,7 @@ export class SelectCityComponent implements OnInit {
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.options.slice())
       );
+    this.myControl.setValue(this.country)
   }
 
   displayFn(country?: Country): string | undefined {
