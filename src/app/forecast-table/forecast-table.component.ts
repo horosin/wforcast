@@ -1,6 +1,7 @@
-import { OnInit, Component, ViewChild } from '@angular/core';
+import { OnInit, Component, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { ForecastTableDataSource } from './forecast-table-datasource';
+import { ForecastTableItem, ForecastTableDataSource } from './forecast-table-datasource';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-forecast-table',
@@ -10,12 +11,13 @@ import { ForecastTableDataSource } from './forecast-table-datasource';
 export class ForecastTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @Input() data: Observable<ForecastTableItem[]>;
   dataSource: ForecastTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['dt', 'temp', 'pressure', 'humidity'];
 
   ngOnInit() {
-    this.dataSource = new ForecastTableDataSource(this.paginator, this.sort);
+    this.dataSource = new ForecastTableDataSource(this.data, this.paginator, this.sort);
   }
 }

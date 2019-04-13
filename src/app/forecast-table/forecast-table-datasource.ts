@@ -1,37 +1,19 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
-import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
+import { Observable, of, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface ForecastTableItem {
-  name: string;
-  id: number;
+  dt: number;
+  main: {
+    temp: Number,
+    pressure: Number,
+    humidity: Number
+  }
 }
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: ForecastTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
-];
+const EXAMPLE_DATA: ForecastTableItem[] = [];
 
 /**
  * Data source for the ForecastTable view. This class should
@@ -39,9 +21,12 @@ const EXAMPLE_DATA: ForecastTableItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
-  data: ForecastTableItem[] = EXAMPLE_DATA;
+  public data: ForecastTableItem[] = EXAMPLE_DATA;
 
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(
+    private dataObservable: Observable<ForecastTableItem[]>,
+    private paginator: MatPaginator,
+    private sort: MatSort) {
     super();
   }
 
@@ -51,19 +36,25 @@ export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<ForecastTableItem[]> {
+
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
-    const dataMutations = [
-      observableOf(this.data),
-      this.paginator.page,
-      this.sort.sortChange
-    ];
+    return this.dataObservable.pipe(flatMap(res => {
+      this.data = res;
+      this.paginator.length = this.data.length;
 
-    // Set the paginator's length
-    this.paginator.length = this.data.length;
+      const dataMutations = [
+        of(this.data),
+        this.paginator.page,
+        this.sort.sortChange
+      ];
 
-    return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
+      return merge(...dataMutations).pipe(map(() => {
+        return this.getPagedData(
+          this.getSortedData([...this.data])
+        );
+      }));
+
     }));
   }
 
@@ -94,8 +85,10 @@ export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'dt': return compare(a.dt, b.dt, isAsc);
+        case 'temp': return compare(a.main.temp, b.main.temp, isAsc);
+        case 'pressure': return compare(a.main.pressure, b.main.pressure, isAsc);
+        case 'humidity': return compare(a.main.humidity, b.main.humidity, isAsc);
         default: return 0;
       }
     });

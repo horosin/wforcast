@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { WeatherService } from '../weather.service'
+import { ForecastTableItem } from '../forecast-table/forecast-table-datasource'
 
 @Component({
   selector: 'app-main-dash',
@@ -29,12 +31,13 @@ export class MainDashComponent implements OnInit {
       ];
     })
   );
+  forecastData: Observable<ForecastTableItem[]>;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.weatherService.getForecast('city');
+    this.forecastData = this.weatherService.getForecast(1).pipe(map((x:any) => x.list));
   }
 }

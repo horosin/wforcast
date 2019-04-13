@@ -1,15 +1,26 @@
 
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+
+    <ng-container matColumnDef="dt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date and time</th>
+      <td mat-cell *matCellDef="let row" class="cell-left">{{row.dt * 1000 | date:'short' }}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    <ng-container matColumnDef="temp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Temperature</th>
+      <td mat-cell *matCellDef="let row">{{row.main.temp - 273.15 | number}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="pressure">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Presure</th>
+      <td mat-cell *matCellDef="let row">{{row.main.pressure}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="humidity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Humidity</th>
+      <td mat-cell *matCellDef="let row">{{row.main.humidity}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
