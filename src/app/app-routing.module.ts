@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
+import { MainDashComponent } from './main-dash/main-dash.component';
+
 
 
 const routes: Routes = [
   {
     path: 'main',
-    component: MainPageComponent,
-    data: { title: 'Heroes List' }
+    component: MainDashComponent,
+    data: { title: 'Main dashboard' }
   },
   { path: '',
     redirectTo: '/main',
