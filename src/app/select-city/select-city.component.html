@@ -4,7 +4,7 @@
   </mat-form-field>
   <mat-form-field class="country-input">
     <input type="text" placeholder="Country" aria-label="Country" matInput [formControl]="myControl"
-      [matAutocomplete]="auto" [value]="country">
+      [matAutocomplete]="auto" value="country">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option.name}}
