@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageComponent } from './modules/forecast/pages/main-page/main-page.component';
+import { AboutPageComponent } from './modules/forecast/pages/about-page/about-page.component';
 import { MainDashComponent } from './modules/forecast/pages/main-dash/main-dash.component';
 
 
@@ -8,7 +8,7 @@ import { MainDashComponent } from './modules/forecast/pages/main-dash/main-dash.
 const routes: Routes = [
   {
     path: 'about',
-    component: MainPageComponent,
+    component: AboutPageComponent,
     data: { title: 'About' }
   },
   {
