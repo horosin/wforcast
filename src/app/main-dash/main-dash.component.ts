@@ -23,6 +23,7 @@ export class MainDashComponent implements OnInit {
   meanHumidity: any;
   meanTemperature: any;
   doubleWidth: number = 2;
+  tableVisible: boolean = false;
 
   cardsize = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -42,9 +43,13 @@ export class MainDashComponent implements OnInit {
   }
 
   update() {
+    this.tableVisible = false;
     this.forecastData = this.weatherService.getForecast(this.city, this.country.alpha2).pipe(map((x:any) => x.list));
-    this.forecastData.subscribe(() => this.calcMeanValues())
-    this.forecastData.subscribe((data) => console.log(data));
+    this.forecastData.subscribe((data) => {
+      this.calcMeanValues();
+      console.log(data)
+      this.tableVisible = true;
+    });
   }
 
   updateCity(event) {

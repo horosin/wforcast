@@ -1,4 +1,4 @@
-import { OnInit, Component, ViewChild, Input } from '@angular/core';
+import { OnInit, Component, ViewChild, Input, SimpleChanges } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { ForecastTableItem, ForecastTableDataSource } from './forecast-table-datasource';
 import { Observable } from 'rxjs';
@@ -19,5 +19,11 @@ export class ForecastTableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new ForecastTableDataSource(this.data, this.paginator, this.sort);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    this.data = changes.data.currentValue;
+
   }
 }

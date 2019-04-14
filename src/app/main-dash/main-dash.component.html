@@ -37,7 +37,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <app-forecast-table [data]="forecastData">Loading table...</app-forecast-table>
+          <app-forecast-table  *ngIf="tableVisible" [data]="forecastData">Loading table...</app-forecast-table>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

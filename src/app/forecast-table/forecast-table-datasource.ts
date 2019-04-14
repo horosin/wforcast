@@ -3,7 +3,6 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { map, flatMap } from 'rxjs/operators';
 import { Observable, of, merge } from 'rxjs';
 
-// TODO: Replace this with your own data model type
 export interface ForecastTableItem {
   dt: number;
   main: {
@@ -13,15 +12,13 @@ export interface ForecastTableItem {
   }
 }
 
-const EXAMPLE_DATA: ForecastTableItem[] = [];
-
 /**
  * Data source for the ForecastTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
 export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
-  public data: ForecastTableItem[] = EXAMPLE_DATA;
+  public data: ForecastTableItem[] = [];
 
   constructor(
     private dataObservable: Observable<ForecastTableItem[]>,
