@@ -2,26 +2,18 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map, flatMap } from 'rxjs/operators';
 import { Observable, of, merge } from 'rxjs';
-
-export interface ForecastTableItem {
-  dt: number;
-  main: {
-    temp: number,
-    pressure: number,
-    humidity: number
-  }
-}
+import { Forecast } from '@app/shared';
 
 /**
  * Data source for the ForecastTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
-  public data: ForecastTableItem[] = [];
+export class ForecastTableDataSource extends DataSource<Forecast> {
+  public data: Forecast[] = [];
 
   constructor(
-    private dataObservable: Observable<ForecastTableItem[]>,
+    private dataObservable: Observable<Forecast[]>,
     private paginator: MatPaginator,
     private sort: MatSort) {
     super();
@@ -32,7 +24,7 @@ export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<ForecastTableItem[]> {
+  connect(): Observable<Forecast[]> {
 
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
@@ -65,7 +57,7 @@ export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: ForecastTableItem[]) {
+  private getPagedData(data: Forecast[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -74,7 +66,7 @@ export class ForecastTableDataSource extends DataSource<ForecastTableItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: ForecastTableItem[]) {
+  private getSortedData(data: Forecast[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }

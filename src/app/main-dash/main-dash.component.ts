@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { WeatherService } from '../weather.service'
-import { ForecastTableItem } from '../forecast-table/forecast-table-datasource'
-import { Country } from '../select-city/select-city.component'
+import { Forecast, Country } from '@app/shared';
 
 @Component({
   selector: 'app-main-dash',
@@ -18,7 +17,7 @@ export class MainDashComponent implements OnInit {
     alpha2: 'UK'
   };
   city: string = 'London';
-  forecastData: Observable<ForecastTableItem[]>;
+  forecastData: Observable<Forecast[]>;
   meanPressure: any;
   meanHumidity: any;
   meanTemperature: any;

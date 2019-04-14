@@ -3,11 +3,8 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {countries} from './countries';
+import {Country} from '@app/shared';
 
-export interface Country {
-  name: string;
-  alpha2: string;
-}
 
 @Component({
   selector: 'app-select-city',

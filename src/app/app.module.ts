@@ -13,6 +13,8 @@ import { MainDashComponent } from './main-dash/main-dash.component';
 import { ForecastTableComponent } from './forecast-table/forecast-table.component';
 import { SelectCityComponent } from './select-city/select-city.component';
 
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { SelectCityComponent } from './select-city/select-city.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
