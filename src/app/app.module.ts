@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core';
 import { ForecastModule } from '@app/modules/forecast/forecast.module';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ForecastModule } from '@app/modules/forecast/forecast.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    LayoutModule,
     MaterialModule,
     SharedModule,
     CoreModule,

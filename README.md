@@ -1,27 +1,57 @@
 # Wforecast
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+5-day weather forecast app based on information acquired from openweathermap.org
 
-## Development server
+Done as an excerise.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![](docs/vis.png)
 
-## Code scaffolding
+Sidenote: This app uses openweathermap token that will soon expire, if you want to use it, edit apiKey in app/core/services/weather.service.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Another note: App is optimized for larger screens but can be adapted for phones very easily.
 
-## Build
+## Development
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Prerequisites
+You need either docker and docker-compose or node 10 and npm.
 
-## Running unit tests
+### With docker
+Just run
+```
+docker-compose up
+```
+
+### Locally
+```
+npm install
+npm start
+```
+
+Navigate to `http://localhost:4200/`.
+
+## Running tests
+
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Built With
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* [Angular](https://www.angular.io/) - The web framework used
+* [Angular Material](https://material.angular.io/) - Component library
+
+## Authors
+
+* **Karol Horosin** - *Initial work* - [horosin](https://github.com/horosin)
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+- Thanks to openweathermap for sharing the data.

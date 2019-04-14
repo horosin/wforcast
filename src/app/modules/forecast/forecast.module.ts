@@ -19,7 +19,7 @@ import { SelectCityComponent } from './components/select-city/select-city.compon
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
     AboutPageComponent,

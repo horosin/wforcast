@@ -19,7 +19,6 @@ import {
     MatPaginatorModule,
     MatSortModule
 } from '@angular/material';
-import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
     exports: [
@@ -27,7 +26,6 @@ import { LayoutModule } from '@angular/cdk/layout';
         MatButtonModule,
         MatSelectModule,
         MatIconModule,
-        LayoutModule,
         MatToolbarModule,
         MatSidenavModule,
         MatListModule,

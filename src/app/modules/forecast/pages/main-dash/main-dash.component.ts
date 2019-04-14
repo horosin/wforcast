@@ -29,8 +29,10 @@ export class MainDashComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         this.doubleWidth = 1;
+        console.log('Big')
       }
       this.doubleWidth = 2;
+      console.log('Big')
     })
   );
 
