@@ -6,32 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainPageComponent } from './main-page/main-page.component';
-import { MainDashComponent } from './main-dash/main-dash.component';
-import { ForecastTableComponent } from './forecast-table/forecast-table.component';
-import { SelectCityComponent } from './select-city/select-city.component';
-
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core';
+import { ForecastModule } from '@app/modules/forecast/forecast.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainPageComponent,
-    MainDashComponent,
-    ForecastTableComponent,
-    SelectCityComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    CoreModule,
+    ForecastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

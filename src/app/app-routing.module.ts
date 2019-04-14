@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageComponent } from './main-page/main-page.component';
-import { MainDashComponent } from './main-dash/main-dash.component';
+import { MainPageComponent } from './modules/forecast/pages/main-page/main-page.component';
+import { MainDashComponent } from './modules/forecast/pages/main-dash/main-dash.component';
 
 
 

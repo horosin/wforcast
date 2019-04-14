@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { WeatherService } from '../weather.service'
+import { WeatherService } from '@app/core';
 import { Forecast, Country } from '@app/shared';
 
 @Component({
