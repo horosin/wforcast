@@ -10,6 +10,11 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content spaced">
           <app-select-city [city]="city" [country]="country" (changeCity)="updateCity($event)"></app-select-city>
+          <div *ngIf="errorMessage">
+            The city {{city}} in country {{country.name}}
+            doesn't exist in our database. Please try the
+            other combination, e.g.: Krakow, Poland
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -21,11 +26,15 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content spaced">
-          <ul>
+          <ul *ngIf="!errorMessage; else meanplaceholder">
             <li>Mean pressure for the next 5 days: {{ meanPressure|number }}</li>
             <li>Mean humidity for the next 5 days: {{ meanHumidity|number }}</li>
             <li>Mean temperature for the next 5 days: {{ meanTemperature - 273.15|number }}</li>
           </ul>
+          <ng-template #meanplaceholder>
+            <div>Please select the city.</div>
+          </ng-template>
+
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
