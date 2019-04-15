@@ -11,9 +11,9 @@ import { SelectCityComponent } from './components/select-city/select-city.compon
 @NgModule({
   declarations: [
     AboutPageComponent,
-    MainDashComponent,
     ForecastTableComponent,
-    SelectCityComponent
+    SelectCityComponent,
+    MainDashComponent,
   ],
   imports: [
     CommonModule,
