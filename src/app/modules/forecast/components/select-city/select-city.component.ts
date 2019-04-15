@@ -13,8 +13,8 @@ import {Country} from '@app/shared';
 })
 export class SelectCityComponent implements OnInit {
 
-  @Input('city') city: string;
-  @Input('country') country: Country;
+  @Input() city: string;
+  @Input() country: Country;
   @Output() changeCity: EventEmitter<{city: string, country: Country}> = new EventEmitter();
   myControl = new FormControl();
   options: Country[] = countries;
@@ -25,13 +25,13 @@ export class SelectCityComponent implements OnInit {
       .pipe(
         startWith<string | Country>(''),
         map(value => {
-          if (!(typeof value === 'string')) this.country = value;
+          if (!(typeof value === 'string')) { this.country = value; }
           return value;
         }),
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.options.slice()),
       );
-    this.myControl.setValue(this.country)
+    this.myControl.setValue(this.country);
   }
 
   displayFn(country?: Country): string | undefined {
@@ -48,6 +48,6 @@ export class SelectCityComponent implements OnInit {
     this.changeCity.emit({
       city: this.city,
       country: this.country
-    })
+    });
   }
 }
