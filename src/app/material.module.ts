@@ -19,9 +19,11 @@ import {
     MatPaginatorModule,
     MatSortModule
 } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
     exports: [
+        LayoutModule,
         MatInputModule, 
         MatButtonModule,
         MatSelectModule,

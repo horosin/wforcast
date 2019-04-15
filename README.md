@@ -31,7 +31,6 @@ npm start
 Navigate to `http://localhost:4200/`.
 
 ## Running tests
-(Warning: tests are not supposed to pass, they need to be written)
 
 ### Running unit tests
 
@@ -46,9 +45,9 @@ ng test
 
 Run the following to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 ```sh
-docker-compose run app ng test
+docker-compose run app ng e2e
 # or locally
-ng test
+ng e2e
 ```
 
 ## Built With

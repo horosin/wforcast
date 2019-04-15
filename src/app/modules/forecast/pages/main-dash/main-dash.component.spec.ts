@@ -1,13 +1,12 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatGridListModule,
-  MatIconModule,
-  MatMenuModule,
-} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@app/material.module';
+import { ForecastTableComponent } from '../../components/forecast-table/forecast-table.component';
+import { SelectCityComponent } from '../../components/select-city/select-city.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 import { MainDashComponent } from './main-dash.component';
 
@@ -17,15 +16,16 @@ describe('MainDashComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainDashComponent],
+      declarations: [
+        ForecastTableComponent,
+        SelectCityComponent,
+        MainDashComponent
+      ],
       imports: [
         NoopAnimationsModule,
-        LayoutModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        MatIconModule,
-        MatMenuModule,
+        HttpClientTestingModule,
+        FormsModule, ReactiveFormsModule,
+        MaterialModule,
       ]
     }).compileComponents();
   }));
