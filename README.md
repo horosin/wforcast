@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/horosin/wforecast.svg?branch=master)](https://travis-ci.org/horosin/wforecast)
+
 # Wforecast
 
 5-day weather forecast app based on information acquired from openweathermap.org
