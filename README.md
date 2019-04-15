@@ -64,5 +64,6 @@ ng e2e
 
 This project is licensed under the MIT License.
 
-## Acknowledgments
+## Acknowledgments/Notes
 - Thanks to openweathermap for sharing the data.
+- Structure of application modules is as described here: https://angular.io/guide/styleguide#overall-structural-guidelines
