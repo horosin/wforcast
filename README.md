@@ -11,10 +11,10 @@ Sidenote: This app uses openweathermap token that will soon expire, if you want 
 Another note: App is optimized for larger screens but can be adapted for phones very easily.
 
 ## Development
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-You need either docker and docker-compose or node 10 and npm.
+Download the source code or clone the repo. You also need either docker and docker-compose or node 10 and npm.
 
 ### With docker
 Just run
@@ -44,6 +44,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 * [Angular](https://www.angular.io/) - The web framework used
 * [Angular Material](https://material.angular.io/) - Component library
+* [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript with typing
 
 ## Authors
 
