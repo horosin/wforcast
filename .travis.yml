@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "10"
+sudo: true
+
+addons:
+  chrome: stable
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng lint
+  - ng test --watch=false
+  - ng e2e
+  - ng build --prod --base-href $base_href

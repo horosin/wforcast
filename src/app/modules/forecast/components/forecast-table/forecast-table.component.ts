@@ -21,10 +21,4 @@ export class ForecastTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new ForecastTableDataSource(this.data, this.paginator, this.sort);
   }
-
-  ngOnChanges(changes: SimpleChanges) {
-
-    this.data = changes.data.currentValue;
-
-  }
 }

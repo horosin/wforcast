@@ -16,23 +16,23 @@ export class MainDashComponent implements OnInit {
     name: 'United Kingdom',
     alpha2: 'UK'
   };
-  city: string = 'London';
+  city = 'London';
   forecastData: Observable<Forecast[]>;
   meanPressure: any;
   meanHumidity: any;
   meanTemperature: any;
-  doubleWidth: number = 2;
-  tableVisible: boolean = false;
-  errorMessage: boolean = false;
+  doubleWidth = 2;
+  tableVisible = false;
+  errorMessage = false;
 
   cardsize = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
         this.doubleWidth = 1;
-        console.log('Big')
+        console.log('Big');
       }
       this.doubleWidth = 2;
-      console.log('Big')
+      console.log('Big');
     })
   );
 
@@ -47,7 +47,7 @@ export class MainDashComponent implements OnInit {
   update() {
     this.tableVisible = false;
     this.errorMessage = false;
-    this.forecastData = this.weatherService.getForecast(this.city, this.country.alpha2).pipe(map((x:any) => x.list));
+    this.forecastData = this.weatherService.getForecast(this.city, this.country.alpha2).pipe(map((x: any) => x.list));
     this.forecastData.subscribe(
       (data) => {
         this.calcMeanValues();
@@ -62,7 +62,7 @@ export class MainDashComponent implements OnInit {
   updateCity(event) {
     this.city = event.city;
     this.country = event.country;
-    console.log(this.city, this.country)
+    console.log(this.city, this.country);
     this.update();
   }
 
@@ -74,7 +74,7 @@ export class MainDashComponent implements OnInit {
         (accumulator, val) => accumulator + val.main.humidity, 0) / data.length;
       this.meanTemperature = data.reduce(
         (accumulator, val) => accumulator + val.main.temp, 0) / data.length;
-      console.log(this.meanHumidity)
-    })
+      console.log(this.meanHumidity);
+    });
   }
 }

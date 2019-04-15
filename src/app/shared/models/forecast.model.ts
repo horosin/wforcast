@@ -4,5 +4,5 @@ export interface Forecast {
         temp: number,
         pressure: number,
         humidity: number
-    }
+    };
 }
