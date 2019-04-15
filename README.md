@@ -14,7 +14,7 @@ Another note: App is optimized for larger screens but can be adapted for phones 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-Download the source code or clone the repo. You also need either docker and docker-compose or node 10 and npm.
+Download the source code or clone the repo (https://github.com/horosin/wforecast). You also need either docker and docker-compose or node 10 and npm.
 
 ### With docker
 Just run
