@@ -66,4 +66,5 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments/Notes
 - Thanks to openweathermap for sharing the data.
+- Shout out to travis for providing free testing platform.
 - Structure of application modules is as described here: https://angular.io/guide/styleguide#overall-structural-guidelines
